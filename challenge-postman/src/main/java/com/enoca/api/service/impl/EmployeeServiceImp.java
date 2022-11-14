@@ -3,12 +3,14 @@ package com.enoca.api.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.enoca.api.exception.NotFoundException;
 import com.enoca.api.model.Employee;
+import com.enoca.api.model.EmployeeJoin;
 import com.enoca.api.repository.EmployeeRespository;
 import com.enoca.api.service.EmployeeService;
-
+@Service
 public class EmployeeServiceImp implements EmployeeService{
 
 	@Autowired private EmployeeRespository employeeRepo;
@@ -98,4 +100,10 @@ public class EmployeeServiceImp implements EmployeeService{
 			raise = employee.getSalary() * 0.03f + raise;
 		return raise;
 	}
+
+//	@Override
+//	public List<Object[]> listEmployees() {
+//		Object[] employObjects = new EmployeeJoin(s);
+//		return employeeRepo.employeeList();
+//	}
 }

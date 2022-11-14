@@ -45,6 +45,10 @@ public class EmployeeController {
 	public List<Employee> listEmployee(){
 		return employeeService.employees();
 	}
+	@GetMapping("/joins")
+	public List<Object[]> listmployee(){
+		return employeeService.listEmployees();
+	}
 	
 	@PutMapping("/{em_id}/{co_id}")
 	public int setCidtoEmployee(@PathVariable("em_id") int em_id, @PathVariable("co_id") int co_id){

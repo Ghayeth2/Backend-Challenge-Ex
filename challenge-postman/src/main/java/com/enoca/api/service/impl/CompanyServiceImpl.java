@@ -3,12 +3,13 @@ package com.enoca.api.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.enoca.api.exception.NotFoundException;
 import com.enoca.api.model.Company;
 import com.enoca.api.repository.CompanyRespository;
 import com.enoca.api.service.CompanyService;
-
+@Service
 public class CompanyServiceImpl implements CompanyService{
 	@Autowired private CompanyRespository companyRepo;
 
@@ -21,10 +22,9 @@ public class CompanyServiceImpl implements CompanyService{
 	public Company updateCompany(Company company, int id) {
 		Company company2 = null;
 		if(companyRepo.existsById(id)) {
-			company2 = companyRepo.getById(id);
+			company2 = companyRepo.findById(id).get();
 			company2.setId(id);
 			company2.setName(company.getName());
-			company2.setEmployees(company.getEmployees());
 		}else {
 			try {
 				throw new NotFoundException("No such company with provided id => "+id);
@@ -61,7 +61,7 @@ public class CompanyServiceImpl implements CompanyService{
 	public Company getCompanyById(int id) {
 		Company company = null;
 		if(companyRepo.existsById(id)) 
-			companyRepo.getById(id);
+			company =  companyRepo.findById(id).get();
 		else {
 			try {
 				throw new NotFoundException("No such company with provided id => "+id);
