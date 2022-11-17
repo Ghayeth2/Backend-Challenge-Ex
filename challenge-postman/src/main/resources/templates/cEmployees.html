@@ -41,12 +41,12 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" th:href="@{/company}">Companies</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/company/new}"
+							aria-current="page" th:href="@{/employee}">Employees</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/employee/new}"
 							>New </a>
 						</li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/employee}"
-							>Manage Employees </a>
+						<li class="nav-item"><a class="nav-link" th:href="@{/company}"
+							>Manage Companies </a>
 						</li>
 					</ul>
 					<form class="d-flex">
@@ -60,26 +60,29 @@
 	</header>
 	<div class="container">
 		<div class="row">
-			<h1>Students List</h1>
+			<h1 th:text="${cName}"> Employees</h1>
 			<table class="table table-dark table-striped table-hover">
 				<thead>
 					<tr>
 						<th scope="col">Id</th>
-						<th scope="col">Name</th>
+						<th scope="col">Full Name</th>
+						<th scope="col">Age</th>
+						<th scope="col">Starting Year</th>
+						<th scope="col">Salary</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="company:${companies}">
-						<td th:text="${company.id}"></td>
-						<td th:text="${company.name}"></td>
-						<td><a th:href="@{/company/delete/{id}(id=${company.id})}"
+					<tr th:each="employee:${employees}">
+						<td th:text="${employee.id}"></td>
+						<td th:text="${employee.name}"></td>
+						<td th:text="${employee.age}"></td>
+						<td th:text="${employee.workingYear}"></td>
+						<td th:text="${employee.salary}"></td>
+						<td><a th:href="@{/employee/delete/{id}(id=${employee.id})}"
 								 type="button" class="btn btn-danger">Delete
-						</a> <a th:href="@{/company/edit/{id}(id=${company.id})}"
+						</a> <a th:href="@{/employee/edit/{id}(id=${employee.id})}"
 								 type="button" class="btn btn-secondary">Edit
-						</a>
-						 <a th:href="@{/company/employees/{id}(id=${company.id})}"
-								 type="button" class="btn btn-info">Employees
 						</a></td>
 					</tr>
 				</tbody>

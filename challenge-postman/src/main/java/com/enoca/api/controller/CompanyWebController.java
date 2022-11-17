@@ -27,15 +27,25 @@ public class CompanyWebController {
 		model.addAttribute("companies", companyService.companies());
 		return "cIndex";
 	}
+	
+	@RequestMapping(value = "/employees/{id}", method = RequestMethod.GET)
+	public String companyEmployees(@PathVariable("id") int id, Model model) {
+		model.addAttribute("cName", companyService.getCompanyById(id).getName());
+		model.addAttribute("employees", companyService.companyEmployees(id));
+		return "cEmployees";
+	}
+	
 	@GetMapping("/new")  
 	public String newCompany() {
 		return "company";
 	}
+	
 	@GetMapping("/delete/{id}")
 	public String deleteCompany(@PathVariable("id") int id) {
 		companyService.deleteCompany(id);
 		return "redirect:/company";
 	}
+	
 	@GetMapping("/edit/{id}")
 	public String editCompany(@PathVariable("id") int id, Model model) {
 //		System.out.println("company id : "+id);
@@ -43,11 +53,13 @@ public class CompanyWebController {
 		model.addAttribute("company", company);
 		return "editCompany";
 	}
+	
 	@PostMapping("/update/{id}")
 	public String updateCompany(@PathVariable("id") int id, @ModelAttribute("company") Company company) {
 		companyService.updateCompany(company, id);
 		return "redirect:/company";
 	}
+	
 	@PostMapping("/save")
 	@ResponseBody
 	public String saveCompany(Company company) {

@@ -1,17 +1,23 @@
 package com.enoca.api.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.enoca.api.exception.NotFoundException;
 import com.enoca.api.model.Company;
+import com.enoca.api.model.Employee;
 import com.enoca.api.repository.CompanyRespository;
+import com.enoca.api.repository.EmployeeRespository;
 import com.enoca.api.service.CompanyService;
+import com.enoca.api.service.EmployeeService;
 @Service
 public class CompanyServiceImpl implements CompanyService{
 	@Autowired private CompanyRespository companyRepo;
+	@Autowired private EmployeeRespository employeeRepo;
 
 	@Override
 	public Company saveCompany(Company company) {
@@ -72,8 +78,11 @@ public class CompanyServiceImpl implements CompanyService{
 		return company;
 	}
 
-//	@Override
-//	public List<Object[]> getCompanyEmployees() {
-//		return companyRepo.getCompanyEmployees();
-//	}
+	@Override
+	public List<Employee> companyEmployees(int id) {
+		List<Employee> employees = employeeRepo.findAll()
+		.stream().filter( emp -> emp.getCompany().getId() == id)
+		.collect(Collectors.toList());
+		return employees;
+	}
 }
