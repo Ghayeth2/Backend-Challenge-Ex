@@ -1,9 +1,6 @@
 package com.enoca.api.service;
 
 import java.util.List;
-
-import org.thymeleaf.spring5.ISpringTemplateEngine;
-
 import com.enoca.api.model.Company;
 import com.enoca.api.model.Employee;
 

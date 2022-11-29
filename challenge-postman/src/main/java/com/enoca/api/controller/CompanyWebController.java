@@ -48,7 +48,6 @@ public class CompanyWebController {
 	
 	@GetMapping("/edit/{id}")
 	public String editCompany(@PathVariable("id") int id, Model model) {
-//		System.out.println("company id : "+id);
 		Company company = companyService.getCompanyById(id);
 		model.addAttribute("company", company);
 		return "editCompany";

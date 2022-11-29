@@ -1,6 +1,5 @@
 package com.enoca.api.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +12,6 @@ import com.enoca.api.model.Employee;
 import com.enoca.api.repository.CompanyRespository;
 import com.enoca.api.repository.EmployeeRespository;
 import com.enoca.api.service.CompanyService;
-import com.enoca.api.service.EmployeeService;
 @Service
 public class CompanyServiceImpl implements CompanyService{
 	@Autowired private CompanyRespository companyRepo;
