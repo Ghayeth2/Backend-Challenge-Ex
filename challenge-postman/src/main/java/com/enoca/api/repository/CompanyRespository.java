@@ -1,9 +1,7 @@
 package com.enoca.api.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.enoca.api.model.Company;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CompanyRespository extends JpaRepository<Company,Integer>{
 //	@Query(value = "select * from employee e "

@@ -1,5 +1,7 @@
 package com.enoca.api.model;
 
+
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
